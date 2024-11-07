@@ -28,6 +28,7 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
         }
+        podfile = project.file("../iosApp/Podfile")
     }
 
     sourceSets {

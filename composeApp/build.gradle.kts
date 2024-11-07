@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
 }
@@ -15,12 +16,15 @@ kotlin {
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
+        iosX64()
+        iosArm64()
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+
+    cocoapods {
+        version = "1.0.0"
+        summary = "empty_summary"
+        homepage = "empty_homepage"
+        framework {
             baseName = "ComposeApp"
             isStatic = true
         }
